@@ -7,7 +7,14 @@ import { ActionButtonsEdit } from "./mini-components/ActionButtonsEdit";
 import { ActionButtonsEditPhone } from "./mini-components/ActionsButtonsEditPhone";
 import Ip from "../Ip";
 
-export const Edit = ({ click, isVisible, invData, invId, setCompleted, completed }) => {
+export const Edit = ({
+  click,
+  isVisible,
+  invData,
+  invId,
+  setCompleted,
+  completed,
+}) => {
   const [items, setItems] = useState(invData.items);
   const [editInfo, setEditInfo] = useState(invData);
   const editDate = new Date(editInfo.createdAt);
@@ -24,30 +31,22 @@ export const Edit = ({ click, isVisible, invData, invId, setCompleted, completed
     event.stopPropagation();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if(editInfo.status === "draft"){
-      setEditInfo({...editInfo, status : "pending"})
+    if (editInfo.status === "draft") {
+      setEditInfo({ ...editInfo, status: "pending" });
     }
-    setCompleted(true)
+
+    const response = await fetch(`${process.env.REACT_APP_IP}/${invId}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(editInfo),
+    });
+
+    setCompleted(true);
     click();
   };
 
-  useEffect(() => {
-    if (completed) {
-      fetch(`http://${Ip}/invoices/${invId}`, {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(editInfo),
-      })
-        .then((res) => {
-          setEditInfo(invData);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
-  }, [completed]);
 
   return (
     <AnimatePresence>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const ActionButtons = ({click, setInvData, removeClick, invData, setCompleted}) => {
+export const ActionButtons = ({click, removeClick, invData, setCompleted}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -11,9 +11,22 @@ export const ActionButtons = ({click, setInvData, removeClick, invData, setCompl
     setIsHovered(false);
   };
 
-  const handleSetPaid = () => {
+  const handleSetPaid = async () => {
     setCompleted(true)
-    setInvData({...invData, status: "paid"})
+    const response = await fetch(`http://localhost:5000/api/status/${invData.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ status: "paid" }) 
+  });
+
+  if (!response.ok) {
+    console.error('Failed to update status');
+    setCompleted(false);
+  } else {
+    console.log('Successfully updated status');
+  }
   }
 
   return (

@@ -5,7 +5,7 @@ export const InvoicesLg = ({ data }) => {
   const navigate = useNavigate();
   return (
     <div className="hidden sm:flex flex-col gap-4 sm:mt-[55px] lg:mt-16 mb-16">
-      {data &&
+      {data ?
         data.map((invoice) => (
           <div
             className="flex cursor-pointer shadow invoice sm:h-[72px] w-full rounded-[8px] items-center justify-between sm:pl-[24px] lg:pl-[32px] text-[15px] pr-6 font-medium hover:outline hover:outline-purple hover:outline-2"
@@ -68,7 +68,8 @@ export const InvoicesLg = ({ data }) => {
               <img src={arrow} className="w-[6px] h-[10px]" alt="" />
             </div>
           </div>
-        ))}
+        )) : <div>Loading...</div>}
+
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ActionButtons2Phone } from "./mini-components/ActionButtons2Phone";
 import { ItemsListLg } from "./mini-components/ItemsListLg";
 import { ItemsListPhone } from "./mini-components/ItemsListPhone";
+import Ip from "../Ip";
 
 export const CreateNew = ({
   click,
@@ -17,7 +18,7 @@ export const CreateNew = ({
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let newId;
     do {
-      let result = " ";
+      let result = "";
       for (let i = 0; i < 2; i++) {
         result += characters.charAt(Math.floor(Math.random() * 26));
       }
@@ -87,7 +88,7 @@ export const CreateNew = ({
 
   useEffect(() => {
     if (completed) {
-      fetch("http://192.168.1.12:8000/invoices/", {
+      fetch(`${process.env.REACT_APP_IP}`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(createInfo),

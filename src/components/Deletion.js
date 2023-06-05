@@ -13,7 +13,7 @@ export const Deletion = ({ remove, removeClick, id }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleDeletion = () => {
-    fetch(`http://${Ip}/invoices/${id}`, {
+    fetch(`${process.env.REACT_APP_IP}/${id}`, {
       method: "DELETE",
     })
       .then((res) => {

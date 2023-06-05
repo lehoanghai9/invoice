@@ -17,7 +17,7 @@ export const InvoiceInfo = () => {
   const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
-    fetch(`http://${Ip}/invoices/${id}`)
+    fetch(`${process.env.REACT_APP_IP}/${id}`)
       .then((res) => {
         return res.json();
       })

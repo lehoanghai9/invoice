@@ -180,68 +180,6 @@
       "total": 6155.91
     },
     {
-      "id": "FV2353",
-      "createdAt": "2021-11-05",
-      "paymentDue": "2021-11-12",
-      "description": "Logo Re-design",
-      "paymentTerms": 7,
-      "clientName": "Anita Wainwright",
-      "clientEmail": "",
-      "status": "draft",
-      "senderAddress": {
-        "street": "19 Union Terrace",
-        "city": "London",
-        "postCode": "E1 3EZ",
-        "country": "United Kingdom"
-      },
-      "clientAddress": {
-        "street": "",
-        "city": "",
-        "postCode": "",
-        "country": ""
-      },
-      "items": [
-        {
-          "name": "Logo Re-design",
-          "quantity": 1,
-          "price": 3102.04,
-          "total": 3102.04
-        }
-      ],
-      "total": 3102.04
-    },
-    {
-      "id": "QW8765",
-      "createdAt": "2022-01-03",
-      "paymentDue": "2022-01-10",
-      "description": "Social Media Ads",
-      "paymentTerms": 7,
-      "clientName": "Kate Smith",
-      "clientEmail": "kate.smith@mail.com",
-      "status": "pending",
-      "senderAddress": {
-        "street": "25 Oxford Street",
-        "city": "London",
-        "postCode": "W1D 2DW",
-        "country": "United Kingdom"
-      },
-      "clientAddress": {
-        "street": "140 High Street",
-        "city": "Manchester",
-        "postCode": "M4 1HQ",
-        "country": "United Kingdom"
-      },
-      "items": [
-        {
-          "name": "Facebook Ads",
-          "quantity": 2,
-          "price": 300,
-          "total": 600
-        }
-      ],
-      "total": 600
-    },
-    {
       "id": "ZX9876",
       "createdAt": "2022-03-01",
       "paymentDue": "2022-03-08",
@@ -277,6 +215,68 @@
         }
       ],
       "total": 850
+    },
+    {
+      "id": " AY9174",
+      "createdAt": "2023-05-19",
+      "paymentDue": "2023-06-02",
+      "description": "2131",
+      "paymentTerms": 14,
+      "clientName": "234324",
+      "clientEmail": "hyperminister@gmail.com",
+      "status": "pending",
+      "senderAddress": {
+        "street": "2 Weston View",
+        "city": "Sheffield",
+        "postCode": "S10 5BZ",
+        "country": "United Kingdom"
+      },
+      "clientAddress": {
+        "street": "Ulászló utca 3.",
+        "city": "Budapest, XI.",
+        "postCode": "1114",
+        "country": "Hungary"
+      },
+      "items": [
+        {
+          "name": "23",
+          "quantity": 23,
+          "price": 23,
+          "total": 529
+        }
+      ],
+      "total": 529
+    },
+    {
+      "id": " EL6913",
+      "createdAt": "2023-05-30",
+      "paymentDue": "",
+      "description": "",
+      "paymentTerms": 30,
+      "clientName": "",
+      "clientEmail": "",
+      "status": "draft",
+      "senderAddress": {
+        "street": "",
+        "city": "",
+        "postCode": "",
+        "country": ""
+      },
+      "clientAddress": {
+        "street": "",
+        "city": "",
+        "postCode": "",
+        "country": ""
+      },
+      "items": [
+        {
+          "name": "",
+          "quantity": 0,
+          "price": 0,
+          "total": 0
+        }
+      ],
+      "total": 0
     }
   ]
 }

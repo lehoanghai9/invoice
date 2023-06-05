@@ -4,12 +4,12 @@ import { Summary } from "./components/Summary";
 import { useState, useEffect } from "react";
 import { CreateNew } from "./components/CreateNew";
 import { PopUp } from "./components/mini-components/PopUp";
-import Ip from "./Ip"
+import Ip from "./Ip";
 
 export const InvoiceTracker = () => {
   const [data, setData] = useState(null);
   const [newInvoice, setNewInvoice] = useState(false);
-  const [completed, setCompleted] = useState(false)
+  const [completed, setCompleted] = useState(false);
   const [filters, setFilters] = useState({
     draft: true,
     pending: true,
@@ -18,13 +18,18 @@ export const InvoiceTracker = () => {
   const filterKeys = ["draft", "pending", "paid"];
   const activeFilters = filterKeys.filter((key) => filters[key]);
 
+
   useEffect(() => {
-    fetch(`http://${Ip}/invoices/`)
+    fetch(`${process.env.REACT_APP_IP}`)
       .then((res) => {
         return res.json();
       })
       .then((resp) => {
-        setData(resp.filter((invoice) => {return activeFilters.includes(invoice.status)}));
+        setData(
+          resp.invoice.filter((invoice) => {
+            return activeFilters.includes(invoice.status);
+          })
+        );
       })
       .catch((err) => {
         console.log(err.message);
@@ -40,7 +45,6 @@ export const InvoiceTracker = () => {
     }
     return () => clearTimeout(timeout);
   }, [completed]);
-
 
   const handleNewInvoice = () => {
     var body = document.body;
@@ -60,10 +64,17 @@ export const InvoiceTracker = () => {
         activeFilters={activeFilters}
       />
       <Empty data={data} />
-      <PopUp text={"Invoice Created"} completed={completed} color={"#7C5DFA"}/>
+      <PopUp text={"Invoice Created"} completed={completed} color={"#7C5DFA"} />
       <Invoices data={data} />
-      {data && <CreateNew click={handleNewInvoice} isVisible={newInvoice} data={data} setCompleted={setCompleted} completed={completed}/>}
-      
+      {data && (
+        <CreateNew
+          click={handleNewInvoice}
+          isVisible={newInvoice}
+          data={data}
+          setCompleted={setCompleted}
+          completed={completed}
+        />
+      )}
     </div>
   );
 };
